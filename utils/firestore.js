@@ -1,9 +1,14 @@
 require('dotenv').config();
-const admin = require('firebase-admin');
-const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+import * as admin from 'firebase-admin';
 
-admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+class FireStore {
+    constructor() {
+        admin.initializeApp({
+            credential: admin.credential.cert(process.env.FIREBASE_CREDENTIALS)
+        });
 
-const firestore = admin.firestore();
+        this.firestore = admin.firestore();
+    }
+}
 
-module.exports = firestore;
+module.exports = FireStore;
