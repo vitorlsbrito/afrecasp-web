@@ -7,7 +7,7 @@ function Stops (req, res) {
         case method == 'POST':
             return res.status(200).json({ message: 'POST' });
         default:
-            return res.status(200).json({ message: 'TESTE' });
+            return res.status(200).json({ message: 'TESTE!' });
     }
 }
 
