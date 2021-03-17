@@ -1,4 +1,3 @@
-require('dotenv').config();
 import * as admin from 'firebase-admin';
 
 class FireStore {
@@ -11,4 +10,4 @@ class FireStore {
     }
 }
 
-module.exports = FireStore;
+module.exports = this.firestore;

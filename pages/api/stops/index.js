@@ -1,4 +1,12 @@
-const firestore = require('../../../utils/firestore');
+import * as admin from 'firebase-admin';
+
+admin.initializeApp({
+    credential: admin.credential.cert(process.env.FIREBASE_CREDENTIALS)
+});
+
+const firestore = admin.firestore();
+
+console.log(firestore);
 
 function Stops (req, res) {
     const { method } = req;
