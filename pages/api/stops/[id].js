@@ -5,8 +5,7 @@ async function Stops (req, res) {
 
     switch (method) {
         case 'GET':
-            const stops = await Stop.scan().exec();
-            return res.json({ stops });
+            return res.json({ message: 'Test' });
             break;
         case 'POST':
             return res.json({ method: 'POST' })
