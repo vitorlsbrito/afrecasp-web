@@ -1,6 +1,6 @@
 import Stop from '../../../models/Stop';
 
-function Stops (req, res) {
+async function Stops (req, res) {
     const { method } = req;
 
     switch (method) {
