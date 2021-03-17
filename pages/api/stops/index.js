@@ -1,9 +1,12 @@
-require('dotenv').config();
+const firestore = require('../../../utils/firestore');
 
 function Stops (req, res) {
     const { method } = req;
 
-    console.log(process.env.FIREBASE_CREDENTIALS);
+    firestore.settings({ ignoreUndefinedProperties: true });
+    const collection = firestore.collection('stops');
+
+    console.log(collection);
 
     switch (method) {
         case method == 'GET':
