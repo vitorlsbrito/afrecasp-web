@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Stop from '../../../models/Stop';
 
 async function Stops (req, res) {
@@ -5,7 +6,10 @@ async function Stops (req, res) {
 
     switch (method) {
         case 'GET':
-            return res.json({req});
+            const router = useRouter();
+            const id = router.query.id;
+
+            return res.json({ message: 'Test' });
             break;
         case 'POST':
             return res.json({ method: 'POST' })
