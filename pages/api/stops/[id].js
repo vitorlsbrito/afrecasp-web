@@ -5,10 +5,7 @@ async function Stops (req, res) {
 
     switch (method) {
         case 'GET':
-            res.setHeader('Cache-Control', 's-maxage=10', 'stale-while-revalidate');
-
-            const stops = await Stop.scan().exec();
-            return res.json({ stops });
+            return res.json({ req });
             break;
         case 'POST':
             return res.json({ method: 'POST' })
