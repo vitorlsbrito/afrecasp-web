@@ -5,7 +5,7 @@ async function Stops (req, res) {
 
     switch (method) {
         case 'GET':
-            return res.json({ message: 'Test' });
+            return res.json(req);
             break;
         case 'POST':
             return res.json({ method: 'POST' })
