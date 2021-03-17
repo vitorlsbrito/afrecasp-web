@@ -7,7 +7,7 @@ async function Stops (req, res) {
         case method == 'GET':
             const stops = await Stop.scan().exec();
 
-            return res.json({ message: 'AOEW' });
+            return res.status(200).json({ message: 'AOEW' });
             //return res.status(200).json({ message: 'GET' });
         case method == 'POST':
             return res.status(200).json({ message: 'POST' });
