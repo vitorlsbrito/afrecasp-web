@@ -7,7 +7,7 @@ async function Stops (req, res) {
         case 'GET':
             res.setHeader('Cache-Control', 's-maxage=10', 'stale-while-revalidate');
 
-            if (!req.params.id) {
+            if (!req.params) {
                 const stops = await Stop.scan().exec();
                 return res.json({ stops });
             } else {
