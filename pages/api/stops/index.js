@@ -4,7 +4,7 @@ async function Stops (req, res) {
     const { method } = req;
 
     switch (method) {
-        case method === 'GET':
+        case method == 'GET':
             const stops = await Stop.scan().exec();
             return res.status(200).json(stops);
             break;
