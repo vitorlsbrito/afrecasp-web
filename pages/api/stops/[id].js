@@ -1,16 +1,18 @@
 import Stop from '../../../models/Stop';
+import { useRouter } from 'next/router';
 
 async function Stops (req, res) {
     const { method } = req;
 
     switch (method) {
         case 'GET':
-            res.setHeader('Cache-Control', 's-maxage=10', 'stale-while-revalidate');
+            const router = useRouter();
+            const { id } = router.query;
 
-            const stops = await Stop.scan().exec();
-            return res.json({ stops });
+            const stop = await Stop.get(id);
+            return res.json(stop);
             break;
-        case 'POST':
+        case 'PUT':
             return res.json({ method: 'POST' })
             break;
         default:
