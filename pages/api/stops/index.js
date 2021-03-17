@@ -5,8 +5,17 @@ async function Stops (req, res) {
 
     switch (method) {
         case 'GET':
-            const stops = await Stop.scan().exec();
-            return res.status(200).json(stops);
+            res.setHeader('Cache-Control', 's-maxage=10', 'stale-while-revalidate');
+
+            if (!req.params.id) {
+                const stops = await Stop.scan().exec();
+                return res.json({ stops });
+            } else {
+                const { id } = req.params;
+
+                const stop = await Stop.get(id);
+                return res.json(stop);
+            }
         default:
             return res.status(200).json({ message: 'Teste' });
     }
