@@ -1,3 +1,4 @@
+require('dotenv').config();
 import firestore from '../../../utils/firestore';
 
 function Stops (req, res) {
