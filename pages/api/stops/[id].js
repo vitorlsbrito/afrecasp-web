@@ -1,26 +1,12 @@
-import Stop from '../../../models/Stop';
 import { useRouter } from 'next/router';
 
-async function Stops (req, res) {
-    const { method } = req;
+function Stops() {
+    const router = useRouter();
+    const id = router.query.id;
 
-    switch (method) {
-        case 'GET':
-            const router = useRouter();
-            const id = router.query.id;
-
-            console.log(`ID: ${ id }`);
-
-            //const stop = await Stop.get(id);
-            //return res.json(stop);
-            return res.json({ stop: id })
-            break;
-        case 'PUT':
-            return res.json({ method: 'POST' })
-            break;
-        default:
-            res.status(500).json({ error: 'Method does not supported.' });
-    }
+    return (
+        <h1>{ id }</h1>
+    )
 }
 
 export default Stops;
