@@ -9,8 +9,11 @@ async function Stops (req, res) {
             const router = useRouter();
             const id = router.query.id;
 
-            const stop = await Stop.get(id);
-            return res.json(stop);
+            console.log(`ID: ${ id }`);
+
+            //const stop = await Stop.get(id);
+            //return res.json(stop);
+            return res.json({ stop: id })
             break;
         case 'PUT':
             return res.json({ method: 'POST' })
