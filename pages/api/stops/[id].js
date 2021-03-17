@@ -7,7 +7,7 @@ async function Stops (req, res) {
     switch (method) {
         case 'GET':
             const router = useRouter();
-            const { id } = router.query;
+            const id = router.query.id;
 
             const stop = await Stop.get(id);
             return res.json(stop);
