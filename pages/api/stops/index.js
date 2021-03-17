@@ -3,6 +3,9 @@ import Stop from '../../../models/Stop';
 async function Stops (req, res) {
     const { method } = req;
 
+    return res.status(200).json({ method });
+
+    /*
     switch (method) {
         case method == 'GET':
             const stops = await Stop.scan().exec();
@@ -14,6 +17,7 @@ async function Stops (req, res) {
         default:
             return res.status(200).json({ message: 'TESTE!' });
     }
+    */
 }
 
 export default Stops;
