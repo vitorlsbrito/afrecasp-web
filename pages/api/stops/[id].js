@@ -8,12 +8,12 @@ async function Stops (req, res) {
 
         const stop = await Stop.get(id);
         res.json(stop);
-    } if (method === 'PUT') {
+    } else if (method === 'PUT') {
         const { id } = req.query;
 
         const stop = await Stop.update(id, req.body);
         res.json(stop);
-    } if (method === 'DELETE') {
+    } else if (method === 'DELETE') {
         const { id } = req.query;
 
         await Stop.delete(id);
