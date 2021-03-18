@@ -3,24 +3,23 @@ import Stop from '../../../models/Stop';
 async function Stops (req, res) {
     const { method } = req;
 
-    switch (method) {
-        case 'GET':
-            let { id } = req.query;
+    if (method === 'GET') {
+        const { id } = req.query;
 
-            let stop = await Stop.get(id);
-            return res.json(stop);
-        case 'PUT':
-            let { id } = req.query;
+        const stop = await Stop.get(id);
+        res.json(stop);
+    } if (method === 'PUT') {
+        const { id } = req.query;
 
-            let stop = await Stop.update(id, req.body);
-            return res.json(stop);
-        case 'DELETE':
-            let { id } = req.params;
+        const stop = await Stop.update(id, req.body);
+        res.json(stop);
+    } if (method === 'DELETE') {
+        const { id } = req.query;
 
-            await Stop.delete(id);
-            return res.sendStatus(204);
-        default:
-            res.status(500).json({ error: 'Method does not supported.' });
+        await Stop.delete(id);
+        res.sendStatus(204);
+    } else {
+        res.status(500).json({ error: 'Method does not supported.' });
     }
 }
 
