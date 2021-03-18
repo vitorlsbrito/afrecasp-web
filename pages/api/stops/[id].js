@@ -5,17 +5,17 @@ async function Stops (req, res) {
 
     switch (method) {
         case 'GET':
-            const { id } = req.query;
+            let { id } = req.query;
 
-            const stop = await Stop.get(id);
+            let stop = await Stop.get(id);
             return res.json(stop);
         case 'PUT':
-            const { id } = req.query;
+            let { id } = req.query;
 
-            const stop = await Stop.update(id, req.body);
+            let stop = await Stop.update(id, req.body);
             return res.json(stop);
         case 'DELETE':
-            const { id } = req.params;
+            let { id } = req.params;
 
             await Stop.delete(id);
             return res.sendStatus(204);
