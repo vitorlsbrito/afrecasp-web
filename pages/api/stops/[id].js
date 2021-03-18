@@ -1,10 +1,27 @@
-import { useRouter } from 'next/router';
+import Stop from '../../../models/Stop';
 
-function Produtos() {
-    const router = useRouter();
-    const id = router.query.id;
+async function Stops (req, res) {
+    const { method } = req;
 
-    return <div>Id: { id }</div>
+    switch (method) {
+        case 'GET':
+            const { id } = req.query;
+
+            const stop = await Stop.get(id);
+            return res.json(stop);
+        case 'PUT':
+            const { id } = req.query;
+
+            const stop = await Stop.update(id, req.body);
+            return res.json(stop);
+        case 'DELETE':
+            const { id } = req.params;
+
+            await Stop.delete(id);
+            return res.sendStatus(204);
+        default:
+            res.status(500).json({ error: 'Method does not supported.' });
+    }
 }
 
-export default Produtos;
+export default Stops;
