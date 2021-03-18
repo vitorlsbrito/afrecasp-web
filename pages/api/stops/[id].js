@@ -17,7 +17,7 @@ async function Stops (req, res) {
         const { id } = req.query;
 
         await Stop.delete(id);
-        res.sendStatus(204);
+        res.status(204).json();
     } else {
         res.status(500).json({ error: 'Method does not supported.' });
     }
