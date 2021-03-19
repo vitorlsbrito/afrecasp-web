@@ -13,7 +13,7 @@ const stopSchema = new dynamoose.Schema({
     id: {
         type: String,
         hashKey: true,
-        default: uuid.v4(),
+        default: uuid.v4,
     },
     bus: {
         type: String,
