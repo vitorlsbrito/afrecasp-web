@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dynamoose": "^2.7.2",
+    "fs": "^0.0.1-security",
     "jsdom": "^16.5.1",
     "next": "^10.0.9",
     "react": "^17.0.1",

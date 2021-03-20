@@ -1,4 +1,3 @@
-
 const axios = require('axios').default;
 const { JSDOM } = require('jsdom');
 
@@ -49,7 +48,8 @@ pages.map(async (page) => {
             .then((data) => {
                 console.log(data.status);
             }).catch((e) => {
-                console.log(e);
+                console(`500 - ${ page.split('/')[3].split('-').join(' ') } - ${  t===0 ? 'Ida' : 'Volta' } - ${ l }`)
+                console.log(500);
             });
         }
     }
