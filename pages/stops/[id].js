@@ -1,17 +1,17 @@
-import { useRouter } from 'next/router';
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Stop from '../../models/Stop';
 
 function Form() {
-    const router = useRouter();
-
     const stopForm = useRef(null);
     const pageTitle = useRef(null);
+    const [id, setId] = useState(null);
 
     useEffect(() => {
-        const fetchStop = async() => {
-            const data = await Stop.get(router.query.id);
+        const params = window.location.pathname.split('/');
+        setId(params[(params.length - 1)]);
 
+        Stop.get(params[(params.length - 1)])
+        .then((data) => {
             stopForm.current['bus'].value = data.bus;
             stopForm.current['trip'].value = data.trip;
             stopForm.current['stop'].value = data.stop;
@@ -22,9 +22,10 @@ function Form() {
             stopForm.current['lng'].value = data.lng;
 
             pageTitle.current.innerHTML = `${ data.bus } - ${ data.trip } - ${ data.label }`
-        }
-        
-        fetchStop();
+        })
+        .catch((e) => {
+            alert('Erro no Dynamoose');
+        });
     }, []);
 
     const handleSubmit = (e) => {
@@ -32,7 +33,7 @@ function Form() {
 
         const updateStop = async() => {
             const data = {
-                id: router.query.id,
+                id,
                 bus: stopForm.current['bus'].value,
                 trip: stopForm.current['trip'].value,
                 stop: parseInt(stopForm.current['stop'].value),
@@ -45,6 +46,7 @@ function Form() {
  
             const stop = await Stop.update(data);
             console.log(stop);
+            document.location.reload(true);
         }
 
         updateStop();
