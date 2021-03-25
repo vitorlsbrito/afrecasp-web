@@ -2,9 +2,9 @@ const dynamoose = require('dynamoose');
 const uuid = require('uuid');
 
 const ddb = new dynamoose.aws.sdk.DynamoDB({
-    'accessKeyId': process.env.ACCESS_KEY_ID,
-    'secretAccessKey': process.env.SECRET_ACCESS_KEY,
-    'region': process.env.REGION,
+    'accessKeyId': process.env.NEXT_PUBLIC_ACCESS_KEY_ID,
+    'secretAccessKey': process.env.NEXT_PUBLIC_SECRET_ACCESS_KEY,
+    'region': process.env.NEXT_PUBLIC_REGION,
 })
 
 dynamoose.aws.ddb.set(ddb);

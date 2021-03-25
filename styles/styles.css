@@ -1,0 +1,92 @@
+* { box-sizing: border-box; outline: none; }
+html, body {
+    background: #EEE;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    padding: 20px 30px;
+    margin: 0;
+}
+
+div.box {
+    background: #FFF;
+    color: #333;
+    border: solid 1px #DDD;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.box h2 {
+    font-size: 20px;
+    font-weight: normal;
+    border-bottom: solid 1px #DDD;
+    padding: 20px 25px;
+    margin: 0;
+}
+
+div.box form {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.box form label {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+div.box form input {
+    font-size: 16px;
+    padding: 10px 0;
+    border: none;
+    border-bottom: solid 1px #333;
+}
+
+div.box form input:focus {
+    border-bottom: solid 1px lightgreen;
+}
+
+form {
+    background: #FFF;
+    padding: 30px;
+    border-radius: 10px;
+    border: solid 1px #CCC;
+    display: flex;
+    flex-direction: column;
+}
+
+form div.inputWrapper {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+form div.inputWrapper label {
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+form div.inputWrapper input {
+    border: none;
+    padding: 7px 5px;
+    border-bottom: solid 1px #CCC;
+}
+
+form button {
+    background: #5a72e0;
+    color: #FFF;
+    width: auto;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: auto;
+    cursor: pointer;
+    display: flex;
+    transition: all 2s;
+}
+
+form button:hover {
+    background: #273782;
+}

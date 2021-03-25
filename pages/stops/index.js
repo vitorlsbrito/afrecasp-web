@@ -1,23 +1,44 @@
-//import Link from 'next/link';
-import { useState, useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Stop from '../../models/Stop';
 
-function StopsList() {
+function Stops() {
     const [stops, setStops] = useState([]);
 
-    const getStops = async() => {
-        const data = await Stops.scanc().exec();
-        setStops(data);
-    }
+    useEffect(() => {
+        const fetchStops = async () => {
+            const data = await Stop.scan().attributes(['id', 'bus', 'trip', 'stop', 'label']).exec();
+            setStops(data);
+        }
 
+        fetchStops();
+    }, []);
+    
     return (
         <>
-            <h1>Stops</h1>
+            <h1>Paradas</h1>
 
-            <p>Stops: { Object.keys(stops).length} </p>
+            <p>Número de paradas: { stops.length }</p>
+
+            { stops.length > 0 && (
+                <>
+                    <p>Lista de paradas</p>
+
+                    <ul>
+                        { stops.map((stop, ix) => {
+                            return (
+                                <li key={ stop.id }>
+                                    <Link href={ `/stops/${ stop.id }`}>
+                                        {`${ ix }: ${ stop.bus } - ${ stop.trip } - ${ stop.stop } - ${ stop.label }`}
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </>
+            )}
         </>
-    );
+    )
 }
 
-export default StopsList;
+export default Stops;
